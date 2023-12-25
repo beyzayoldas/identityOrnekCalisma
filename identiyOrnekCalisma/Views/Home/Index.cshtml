@@ -9,9 +9,20 @@
 @if (User.Identity.IsAuthenticated)
 {
     <label class="form-label label-info">
-        @User.Identity.Name 
+        @User.Identity.Name
     </label>
     <a href="/Account/Logout" class="btn btn-danger">Logout</a>
+    <hr />
+    <div>
+        @if (User.IsInRole("Freelancer"))
+        {
+            <a href="@Url.Action("JobAcceptance", "Freelancer")" class="btn btn-primary">Job Acceptance</a>
+        }
+        else if (User.IsInRole("Customer"))
+        {
+            <a href="@Url.Action("JobAssignment", "Customer")" class="btn btn-success">Job Assignment</a>
+        }
+    </div>
 }
 else
 {

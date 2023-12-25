@@ -26,6 +26,12 @@ namespace identiyOrnekCalisma.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Şifreler eşleşmiyor.")]
+        public string RePassword { get; set; }
+        [Required]
+        public string UserType { get; set; } // Bu alan kullanıcı tipini belirtir (Freelancer veya Customer)
     }
 
     public class RoleEditModel

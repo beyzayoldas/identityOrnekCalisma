@@ -11,6 +11,39 @@
 <body>
 
     <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Freelancer Uygulaması", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Freelancer"))
+                        {
+                            <li>@Html.ActionLink("İş Alma", "JobAcceptance", "Freelancer")</li>
+                        }
+                        else if (User.IsInRole("Customer"))
+                        {
+                            <li>@Html.ActionLink("İş Atama", "JobAssignment", "Customer")</li>
+                        }
+                        <li>@Html.ActionLink("Çıkış", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Giriş Yap", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Kayıt Ol", "Register", "Account")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+
         @RenderBody()
     </div>
 
