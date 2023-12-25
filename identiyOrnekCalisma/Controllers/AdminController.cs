@@ -21,6 +21,12 @@ namespace identiyOrnekCalisma.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            // userManager.Users koleksiyonunun eleman sayısını al
+            int userCount = userManager.Users.Count();
+
+            // Daha sonra istediğiniz işlemleri gerçekleştirebilirsiniz
+            // Örneğin, ViewBag aracılığıyla View'a gönderme:
+            ViewBag.UserCount = userCount;
             return View(userManager.Users);
         }
     }

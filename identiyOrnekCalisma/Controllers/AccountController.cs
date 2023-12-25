@@ -106,15 +106,20 @@ namespace identiyOrnekCalisma.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser();
-                user.UserName = model.Username;
-                user.Email = model.Email;
+                var user = new ApplicationUser
+                {
+                    UserName = model.Username,
+                    Email = model.Email
+                };
 
                 var result = userManager.Create(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    userManager.AddToRole(user.Id, "User");
+                    // UserType'a göre rol ataması yapın
+                    var userTypeRole = model.UserType == "Freelancer" ? "Freelancer" : "Customer";
+                    userManager.AddToRole(user.Id, userTypeRole);
+
                     return RedirectToAction("Login");
                 }
                 else
@@ -125,8 +130,11 @@ namespace identiyOrnekCalisma.Controllers
                     }
                 }
             }
+
             return View(model);
         }
+
+
 
         public ActionResult Logout() 
         {
