@@ -1,6 +1,12 @@
-@{
-    ViewBag.Title = "Job Assignment";
-}
+﻿<!-- JobAssignment.cshtml -->
+@model identiyOrnekCalisma.Models.ProjectModel
 
 <h2>Job Assignment Page</h2>
+
+<!-- Kullanıcıdan proje bilgilerini alacak olan kısım -->
+@Html.Partial("_ProjectForm", Model)
+
+<hr />
+
+<a href="/Customer/MyProject" class="btn btn-success">My Project</a>
 

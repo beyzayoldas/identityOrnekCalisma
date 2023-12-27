@@ -3,6 +3,9 @@ using System.Linq;
 using System.Web.Mvc;
 using identiyOrnekCalisma.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using identiyOrnekCalisma.Models;
+using System.Collections.Generic;
+using identiyOrnekCalisma.Project;
 
 namespace identiyOrnekCalisma.Controllers
 {
@@ -17,31 +20,12 @@ namespace identiyOrnekCalisma.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
+            using (var context = new ProjectDataContext()) // DbContext'inizle aynı context adını kullanmalısınız
+            {
+                var allProjects = context.ProjectModels.ToList(); // Tüm projeleri çek
 
-        [Authorize]
-        public ActionResult About()
-        {
-            //var userId = User.Identity.GetUserId();
-            //var userRoles = userManager.GetRoles(userId);
-
-            //if (userRoles.Contains("Freelancer"))
-            //{
-            //    return RedirectToAction("JobAcceptance", "Freelancer");
-            //}
-            //else if (userRoles.Contains("Customer"))
-            //{
-            //    return RedirectToAction("JobAssignment", "Customer");
-            //}
-            //else
-            //{
-            //    // Diğer roller için varsayılan sayfa veya hata sayfasına yönlendirme yapabilirsiniz.
-            //    return View();
-            //}
-
-            return View();
-
+                return View(allProjects);
+            }
         }
     }
 }

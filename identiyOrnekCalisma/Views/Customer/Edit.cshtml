@@ -1,0 +1,34 @@
+﻿@model identiyOrnekCalisma.Models.ProjectModel
+@{
+    ViewBag.Title = "Edit Project";
+}
+
+<h2>Edit Project</h2>
+<hr />
+
+@using (Html.BeginForm("SaveEdit", "Customer", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.ProjectId)
+
+    <div class="form-group">
+        <label for="ProjectTitle">Project Title:</label>
+        @Html.TextBoxFor(model => model.ProjectTitle, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="Budget">Budget:</label>
+        @Html.TextBoxFor(model => model.Budget, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="EndTime">End Time:</label>
+        @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}

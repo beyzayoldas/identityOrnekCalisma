@@ -1,0 +1,12 @@
+﻿@model identiyOrnekCalisma.Models.ProjectModel
+@{
+    ViewBag.Title = "MyProject";
+}
+
+<h2>MyProject</h2>
+
+<div>
+    <div id="projectTable">
+        @Html.Action("ProjectTable", "Customer")
+    </div>
+</div>
