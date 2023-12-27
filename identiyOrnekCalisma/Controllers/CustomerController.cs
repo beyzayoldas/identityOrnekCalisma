@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using identiyOrnekCalisma.Models;
 using identiyOrnekCalisma.Project; // Bu using ifadesi eklenmiştir
+using Microsoft.AspNet.Identity;
 
 namespace identiyOrnekCalisma.Controllers
 {
@@ -18,6 +19,10 @@ namespace identiyOrnekCalisma.Controllers
 
         [HttpGet]
         public ActionResult JobAssignment()
+        {
+            return View();
+        }
+        public ActionResult MyProject() 
         {
             return View();
         }
@@ -124,7 +129,6 @@ namespace identiyOrnekCalisma.Controllers
                 return RedirectToAction("JobAssignment"); // veya başka bir sayfaya yönlendirme yapabilirsiniz
             }
         }
-
 
     }
 }

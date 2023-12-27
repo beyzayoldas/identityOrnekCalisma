@@ -674,6 +674,8 @@
     <Content Include="Views\Customer\_ProjectTable.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\_ProjectForm.cshtml" />
+    <Content Include="Views\Customer\MyProject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

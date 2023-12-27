@@ -1,51 +1,12 @@
-﻿@model identiyOrnekCalisma.Models.ProjectModel
-
-@{
-    ViewBag.Title = "Job Assignment";
-}
+﻿<!-- JobAssignment.cshtml -->
+@model identiyOrnekCalisma.Models.ProjectModel
 
 <h2>Job Assignment Page</h2>
 
-@using (Html.BeginForm("SubmitJob", "Customer", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+<!-- Kullanıcıdan proje bilgilerini alacak olan kısım -->
+@Html.Partial("_ProjectForm", Model)
 
-    <div class="form-group">
-        <label>Project Title</label>
-        @Html.TextBoxFor(model => model.ProjectTitle, new { @class = "form-control" })
-    </div>
+<hr />
 
-    <div class="form-group">
-        <label>Description</label>
-        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
-    </div>
+<a href="/Customer/MyProject" class="btn btn-success">My Project</a>
 
-    <div class="form-group">
-        <label>Budget</label>
-        @Html.TextBoxFor(model => model.Budget, new { @class = "form-control", type = "number" })
-    </div>
-
-    <div class="form-group">
-        <label>End Time</label>
-        @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control", type = "datetime-local" })
-    </div>
-
-    <div class="form-group">
-        <label>Customer Name</label>
-        @Html.TextBox("CustomerName", User.Identity.Name, new { @class = "form-control", @readonly = "readonly" })
-    </div>
-
-    <hr />
-
-    <button type="submit" class="btn btn-primary">Submit Project</button>
-
-    <hr />
-
-    <div>
-        <h3>My Projects</h3>
-        <div id="projectTable">
-            @Html.Action("ProjectTable", "Customer")
-        </div>
-    </div>
-
-}
