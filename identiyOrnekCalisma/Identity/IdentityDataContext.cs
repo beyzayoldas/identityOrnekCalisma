@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿// IdentityDataContext.cs
+using identiyOrnekCalisma.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace identiyOrnekCalisma.Identity
 {
@@ -10,7 +9,6 @@ namespace identiyOrnekCalisma.Identity
     {
         public IdentityDataContext() : base("identityConnection")
         {
-
         }
     }
 }

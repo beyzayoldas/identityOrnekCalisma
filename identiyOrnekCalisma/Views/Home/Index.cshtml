@@ -23,6 +23,38 @@
             <a href="@Url.Action("JobAssignment", "Customer")" class="btn btn-success">Job Assignment</a>
         }
     </div>
+
+    <hr />
+
+    <table class="table table-striped">
+        <tr>
+            <th>Project Title</th>
+            <th>Description</th>
+            <th>Budget</th>
+            <th>End Time</th>
+            <th>Customer Name</th>
+        </tr>
+
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td colspan="4">No projects found.</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var project in Model)
+            {
+                <tr>
+                    <td>@project.ProjectTitle</td>
+                    <td>@project.Description</td>
+                    <td>@project.Budget</td>
+                    <td>@project.EndTime</td>
+                    <td>@project.CustomerName</td>
+                </tr>
+            }
+        }
+    </table>
 }
 else
 {

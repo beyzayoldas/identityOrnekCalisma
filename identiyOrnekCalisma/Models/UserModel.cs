@@ -50,6 +50,4 @@ namespace identiyOrnekCalisma.Models
         public string[] IdsToAdd { get; set; }
         public string[] IdsToDelete { get; set; }
     }
-
-
 }

@@ -1,0 +1,37 @@
+﻿@model List<identiyOrnekCalisma.Models.ProjectModel>
+@{
+    ViewBag.Title = "_ProjectTable";
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>Project Title</th>
+        <th>Description</th>
+        <th>Budget</th>
+        <th>End Time</th>
+        <th>Action</th> <!-- Yeni eklenen satır -->
+    </tr>
+
+    @if (Model.Count == 0)
+    {
+        <tr>
+            <td colspan="4">No projects found.</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var project in Model)
+        {
+            <tr>
+                <td>@project.ProjectTitle</td>
+                <td>@project.Description</td>
+                <td>@project.Budget</td>
+                <td>@project.EndTime</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = project.ProjectId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = project.ProjectId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    }
+</table>
